@@ -1,0 +1,77 @@
+{
+  "roles": [
+    {
+      "code": "WP06_OWNER",
+      "name": "WP06 Owner"
+    }
+  ],
+  "workflow_blueprints": [
+    {
+      "code": "WP06-WF",
+      "name": "WP06 Workflow"
+    }
+  ],
+  "workflow_nodes": [
+    {
+      "code": "DRAFT"
+    },
+    {
+      "code": "REVIEW"
+    },
+    {
+      "code": "APPROVE"
+    },
+    {
+      "code": "COMPLETE"
+    }
+  ],
+  "workflow_transitions": [
+    {
+      "code": "SUBMIT"
+    },
+    {
+      "code": "APPROVE"
+    },
+    {
+      "code": "REJECT"
+    }
+  ],
+  "work_packages": [
+    {
+      "code": "WP06",
+      "name": "WP06"
+    }
+  ],
+  "task_lists": [
+    {
+      "code": "WP06-TL01",
+      "name": "Primary Process"
+    }
+  ],
+  "tasks": [
+    {
+      "code": "WP06-T01",
+      "name": "Initiate"
+    },
+    {
+      "code": "WP06-T02",
+      "name": "Review"
+    },
+    {
+      "code": "WP06-T03",
+      "name": "Approve"
+    }
+  ],
+  "work_instructions": [
+    {
+      "code": "WP06-WI01",
+      "name": "Standard Procedure"
+    }
+  ],
+  "staff": [
+    {
+      "staff_no": "S10001",
+      "name": "New Joiner Example"
+    }
+  ]
+}

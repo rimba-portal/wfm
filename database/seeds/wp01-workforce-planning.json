@@ -1,0 +1,89 @@
+{
+  "roles": [
+    {
+      "code": "WP01_OWNER",
+      "name": "WP01 Owner"
+    }
+  ],
+  "workflow_blueprints": [
+    {
+      "code": "WP01-WF",
+      "name": "WP01 Workflow"
+    }
+  ],
+  "workflow_nodes": [
+    {
+      "code": "DRAFT"
+    },
+    {
+      "code": "REVIEW"
+    },
+    {
+      "code": "APPROVE"
+    },
+    {
+      "code": "COMPLETE"
+    }
+  ],
+  "workflow_transitions": [
+    {
+      "code": "SUBMIT"
+    },
+    {
+      "code": "APPROVE"
+    },
+    {
+      "code": "REJECT"
+    }
+  ],
+  "work_packages": [
+    {
+      "code": "WP01",
+      "name": "WP01"
+    }
+  ],
+  "task_lists": [
+    {
+      "code": "WP01-TL01",
+      "name": "Primary Process"
+    }
+  ],
+  "tasks": [
+    {
+      "code": "WP01-T01",
+      "name": "Initiate"
+    },
+    {
+      "code": "WP01-T02",
+      "name": "Review"
+    },
+    {
+      "code": "WP01-T03",
+      "name": "Approve"
+    }
+  ],
+  "work_instructions": [
+    {
+      "code": "WP01-WI01",
+      "name": "Standard Procedure"
+    }
+  ],
+  "wp_workforce_plans": [
+    {
+      "code": "FY2027-ATM",
+      "name": "FY2027 Workforce Plan",
+      "requirements": [
+        {
+          "code": "REQ-DEV",
+          "required_count": 12,
+          "current_count": 8
+        },
+        {
+          "code": "REQ-CYBER",
+          "required_count": 4,
+          "current_count": 2
+        }
+      ]
+    }
+  ]
+}

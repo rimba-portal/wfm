@@ -1,0 +1,77 @@
+{
+  "roles": [
+    {
+      "code": "WP08_OWNER",
+      "name": "WP08 Owner"
+    }
+  ],
+  "workflow_blueprints": [
+    {
+      "code": "WP08-WF",
+      "name": "WP08 Workflow"
+    }
+  ],
+  "workflow_nodes": [
+    {
+      "code": "DRAFT"
+    },
+    {
+      "code": "REVIEW"
+    },
+    {
+      "code": "APPROVE"
+    },
+    {
+      "code": "COMPLETE"
+    }
+  ],
+  "workflow_transitions": [
+    {
+      "code": "SUBMIT"
+    },
+    {
+      "code": "APPROVE"
+    },
+    {
+      "code": "REJECT"
+    }
+  ],
+  "work_packages": [
+    {
+      "code": "WP08",
+      "name": "WP08"
+    }
+  ],
+  "task_lists": [
+    {
+      "code": "WP08-TL01",
+      "name": "Primary Process"
+    }
+  ],
+  "tasks": [
+    {
+      "code": "WP08-T01",
+      "name": "Initiate"
+    },
+    {
+      "code": "WP08-T02",
+      "name": "Review"
+    },
+    {
+      "code": "WP08-T03",
+      "name": "Approve"
+    }
+  ],
+  "work_instructions": [
+    {
+      "code": "WP08-WI01",
+      "name": "Standard Procedure"
+    }
+  ],
+  "wp_separation_requests": [
+    {
+      "code": "SEP-001",
+      "reason": "Retirement"
+    }
+  ]
+}

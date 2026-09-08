@@ -1,0 +1,83 @@
+{
+  "roles": [
+    {
+      "code": "WP02_OWNER",
+      "name": "WP02 Owner"
+    }
+  ],
+  "workflow_blueprints": [
+    {
+      "code": "WP02-WF",
+      "name": "WP02 Workflow"
+    }
+  ],
+  "workflow_nodes": [
+    {
+      "code": "DRAFT"
+    },
+    {
+      "code": "REVIEW"
+    },
+    {
+      "code": "APPROVE"
+    },
+    {
+      "code": "COMPLETE"
+    }
+  ],
+  "workflow_transitions": [
+    {
+      "code": "SUBMIT"
+    },
+    {
+      "code": "APPROVE"
+    },
+    {
+      "code": "REJECT"
+    }
+  ],
+  "work_packages": [
+    {
+      "code": "WP02",
+      "name": "WP02"
+    }
+  ],
+  "task_lists": [
+    {
+      "code": "WP02-TL01",
+      "name": "Primary Process"
+    }
+  ],
+  "tasks": [
+    {
+      "code": "WP02-T01",
+      "name": "Initiate"
+    },
+    {
+      "code": "WP02-T02",
+      "name": "Review"
+    },
+    {
+      "code": "WP02-T03",
+      "name": "Approve"
+    }
+  ],
+  "work_instructions": [
+    {
+      "code": "WP02-WI01",
+      "name": "Standard Procedure"
+    }
+  ],
+  "job_roles": [
+    {
+      "code": "JR-SRDEV",
+      "name": "Senior Developer"
+    }
+  ],
+  "job_positions": [
+    {
+      "code": "JP-SRDEV-L3",
+      "title": "Senior Developer L3"
+    }
+  ]
+}
