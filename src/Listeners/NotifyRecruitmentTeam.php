@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rimba\Wfm\Listeners;
 
-use Rimba\Wfm\Events\WorkforcePlanApproved;
 class NotifyRecruitmentTeam
 {
     public function handle($event): void
@@ -10,4 +11,3 @@ class NotifyRecruitmentTeam
         // send notification
     }
 }
-

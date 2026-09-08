@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rimba\Wfm\Actions;
 
 use Rimba\Wfm\Models\WorkforcePlan;
-use Rimba\Wfm\Models\ManpowerRequest;
+
 class CreateWorkforcePlan
 {
     public function execute(array $data): WorkforcePlan
@@ -11,4 +13,3 @@ class CreateWorkforcePlan
         return WorkforcePlan::create($data);
     }
 }
-

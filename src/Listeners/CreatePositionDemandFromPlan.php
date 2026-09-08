@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rimba\Wfm\Listeners;
 
 use Rimba\Wfm\Events\WorkforcePlanApproved;
+
 class CreatePositionDemandFromPlan
 {
     public function handle(WorkforcePlanApproved $event): void
@@ -10,4 +13,3 @@ class CreatePositionDemandFromPlan
         // integrate with jawat / manpower planning
     }
 }
-

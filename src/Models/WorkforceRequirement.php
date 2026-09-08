@@ -4,30 +4,20 @@ declare(strict_types=1);
 
 namespace Rimba\Wfm\Models;
 
-use App\Models\User;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Rimba\Agreement\Models\Agreement;
-use Rimba\Organization\Models\OrgCorp;
 use Rimba\Organization\Models\OrgTeam;
 use Rimba\Organization\Models\OrgUnit;
-use Rimba\People\Models\Staff;
 use Rimba\Position\Models\JobPosition;
-use Rimba\Wfm\Enums\ApplicationStatus;
-use Rimba\Wfm\Enums\ManpowerRequestStatus;
-use Rimba\Wfm\Enums\SeparationStatus;
-use Rimba\Wfm\Enums\WorkforcePlanStatus;
 
+#[Table(name: 'wfm_workforce_requirements')]
 class WorkforceRequirement extends Model
 {
     use HasFactory;
-
-    protected $table = 'wfm_workforce_requirements';
 
     protected function casts(): array
     {
@@ -70,9 +60,10 @@ class WorkforceRequirement extends Model
         return $this->hasMany(ManpowerRequest::class);
     }
 
-    public function getGapAttribute(): int
+    protected function gap(): Attribute
     {
-        return max(0, $this->required_count - $this->current_count);
+        return Attribute::make(get: function (): float|int {
+            return max(0, $this->required_count - $this->current_count);
+        });
     }
 }
-

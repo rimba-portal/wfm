@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rimba\Wfm\Enums;
+
 enum WorkforcePlanStatus: string
 {
-    case Draft = "draft";
-    case Submitted = "submitted";
-    case Approved = "approved";
-    case Rejected = "rejected";
+    case Draft = 'draft';
+    case Submitted = 'submitted';
+    case Approved = 'approved';
+    case Rejected = 'rejected';
 }
-
