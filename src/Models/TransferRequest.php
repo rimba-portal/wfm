@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Rimba\Wfm\Models;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,24 +16,13 @@ use Rimba\People\Models\Staff;
 use Rimba\Position\Models\JobPosition;
 
 #[Table(name: 'wfm_transfer_requests')]
-class TransferRequest extends Model
+#[Fillable(['staff_id', 'from_job_position_id', 'to_job_position_id', 'from_org_unit_id', 'to_org_unit_id', 'mobility_type', 'status', 'requested_by_id', 'approved_by_id', 'effective_date', 'job_agreement_id', 'reason', 'attributes'])] class TransferRequest extends Model
 {
     use HasFactory;
 
     protected function casts(): array
     {
-        return [
-            'staff_id' => 'integer',
-            'from_job_position_id' => 'integer',
-            'to_job_position_id' => 'integer',
-            'from_org_unit_id' => 'integer',
-            'to_org_unit_id' => 'integer',
-            'requested_by_id' => 'integer',
-            'approved_by_id' => 'integer',
-            'effective_date' => 'date',
-            'job_agreement_id' => 'integer',
-            'attributes' => 'array',
-        ];
+        return ['staff_id' => 'integer', 'from_job_position_id' => 'integer', 'to_job_position_id' => 'integer', 'from_org_unit_id' => 'integer', 'to_org_unit_id' => 'integer', 'requested_by_id' => 'integer', 'approved_by_id' => 'integer', 'effective_date' => 'date', 'job_agreement_id' => 'integer', 'attributes' => 'array'];
     }
 
     public function staff(): BelongsTo

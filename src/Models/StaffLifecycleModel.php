@@ -16,13 +16,7 @@ abstract class StaffLifecycleModel extends Model
 
     protected function casts(): array
     {
-        return [
-            'staff_id' => 'integer',
-            'job_position_id' => 'integer',
-            'start_date' => 'date',
-            'end_date' => 'date',
-            'attributes' => 'array',
-        ];
+        return ['staff_id' => 'integer', 'job_position_id' => 'integer', 'start_date' => 'date', 'end_date' => 'date', 'attributes' => 'array'];
     }
 
     public function staff(): BelongsTo

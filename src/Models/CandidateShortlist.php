@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Rimba\Wfm\Models;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,21 +14,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Rimba\Position\Models\JobPosition;
 
 #[Table(name: 'wfm_candidate_shortlists')]
+#[Fillable(['code', 'manpower_request_id', 'job_position_id', 'status', 'prepared_by_id', 'prepared_at', 'approved_by_id', 'approved_at', 'attributes'])]
 class CandidateShortlist extends Model
 {
     use HasFactory;
 
     protected function casts(): array
     {
-        return [
-            'manpower_request_id' => 'integer',
-            'job_position_id' => 'integer',
-            'prepared_by_id' => 'integer',
-            'prepared_at' => 'datetime',
-            'approved_by_id' => 'integer',
-            'approved_at' => 'datetime',
-            'attributes' => 'array',
-        ];
+        return ['manpower_request_id' => 'integer', 'job_position_id' => 'integer', 'prepared_by_id' => 'integer', 'prepared_at' => 'datetime', 'approved_by_id' => 'integer', 'approved_at' => 'datetime', 'attributes' => 'array'];
     }
 
     public function manpowerRequest(): BelongsTo

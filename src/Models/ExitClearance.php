@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Rimba\Wfm\Models;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,21 +14,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Rimba\People\Models\Staff;
 
 #[Table(name: 'wfm_exit_clearances')]
-class ExitClearance extends Model
+#[Fillable(['separation_request_id', 'staff_id', 'status', 'started_at', 'completed_at', 'completed_by_id', 'summary', 'attributes'])] class ExitClearance extends Model
 {
     use HasFactory;
 
     protected function casts(): array
     {
-        return [
-            'separation_request_id' => 'integer',
-            'staff_id' => 'integer',
-            'started_at' => 'datetime',
-            'completed_at' => 'datetime',
-            'completed_by_id' => 'integer',
-            'summary' => 'array',
-            'attributes' => 'array',
-        ];
+        return ['separation_request_id' => 'integer', 'staff_id' => 'integer', 'started_at' => 'datetime', 'completed_at' => 'datetime', 'completed_by_id' => 'integer', 'summary' => 'array', 'attributes' => 'array'];
     }
 
     public function separationRequest(): BelongsTo

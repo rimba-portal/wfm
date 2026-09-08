@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Rimba\Wfm\Models;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,22 +15,13 @@ use Rimba\People\Models\Staff;
 use Rimba\Position\Models\JobPosition;
 
 #[Table(name: 'wfm_promotion_requests')]
-class PromotionRequest extends Model
+#[Fillable(['staff_id', 'current_job_position_id', 'target_job_position_id', 'status', 'requested_by_id', 'approved_by_id', 'effective_date', 'job_agreement_id', 'reason', 'attributes'])] class PromotionRequest extends Model
 {
     use HasFactory;
 
     protected function casts(): array
     {
-        return [
-            'staff_id' => 'integer',
-            'current_job_position_id' => 'integer',
-            'target_job_position_id' => 'integer',
-            'requested_by_id' => 'integer',
-            'approved_by_id' => 'integer',
-            'effective_date' => 'date',
-            'job_agreement_id' => 'integer',
-            'attributes' => 'array',
-        ];
+        return ['staff_id' => 'integer', 'current_job_position_id' => 'integer', 'target_job_position_id' => 'integer', 'requested_by_id' => 'integer', 'approved_by_id' => 'integer', 'effective_date' => 'date', 'job_agreement_id' => 'integer', 'attributes' => 'array'];
     }
 
     public function staff(): BelongsTo

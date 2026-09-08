@@ -4,26 +4,21 @@ declare(strict_types=1);
 
 namespace Rimba\Wfm\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #[Table(name: 'wfm_candidate_shortlist_items')]
+#[Fillable(['candidate_shortlist_id', 'candidate_id', 'job_application_id', 'ranking', 'score', 'status', 'remarks', 'attributes'])]
 class CandidateShortlistItem extends Model
 {
     use HasFactory;
 
     protected function casts(): array
     {
-        return [
-            'candidate_shortlist_id' => 'integer',
-            'candidate_id' => 'integer',
-            'job_application_id' => 'integer',
-            'ranking' => 'integer',
-            'score' => 'decimal:2',
-            'attributes' => 'array',
-        ];
+        return ['candidate_shortlist_id' => 'integer', 'candidate_id' => 'integer', 'job_application_id' => 'integer', 'ranking' => 'integer', 'score' => 'decimal:2', 'attributes' => 'array'];
     }
 
     public function shortlist(): BelongsTo

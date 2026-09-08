@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Rimba\Wfm\Models;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,28 +17,14 @@ use Rimba\Position\Models\JobPosition;
 use Rimba\Wfm\Enums\ManpowerRequestStatus;
 
 #[Table(name: 'wfm_manpower_requests')]
+#[Fillable(['request_no', 'workforce_plan_id', 'workforce_requirement_id', 'org_unit_id', 'org_team_id', 'job_position_id', 'required_count', 'reason', 'priority', 'target_date', 'status', 'requested_by_id', 'requested_at', 'approved_by_id', 'approved_at', 'attributes'])]
 class ManpowerRequest extends Model
 {
     use HasFactory;
 
     protected function casts(): array
     {
-        return [
-            'workforce_plan_id' => 'integer',
-            'workforce_requirement_id' => 'integer',
-            'org_unit_id' => 'integer',
-            'org_team_id' => 'integer',
-            'job_position_id' => 'integer',
-            'required_count' => 'integer',
-            'priority' => 'integer',
-            'target_date' => 'date',
-            'status' => ManpowerRequestStatus::class,
-            'requested_by_id' => 'integer',
-            'requested_at' => 'datetime',
-            'approved_by_id' => 'integer',
-            'approved_at' => 'datetime',
-            'attributes' => 'array',
-        ];
+        return ['workforce_plan_id' => 'integer', 'workforce_requirement_id' => 'integer', 'org_unit_id' => 'integer', 'org_team_id' => 'integer', 'job_position_id' => 'integer', 'required_count' => 'integer', 'priority' => 'integer', 'target_date' => 'date', 'status' => ManpowerRequestStatus::class, 'requested_by_id' => 'integer', 'requested_at' => 'datetime', 'approved_by_id' => 'integer', 'approved_at' => 'datetime', 'attributes' => 'array'];
     }
 
     public function workforcePlan(): BelongsTo
