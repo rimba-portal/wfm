@@ -14,8 +14,8 @@ final class WorkforceStateResolver
             'staff_id' => $staff->id,
             'org_corp_id' => $staff->org_corp_id,
             'org_unit_id' => $staff->org_unit_id,
-            'job_position_id' => $staff->job_position_id,
-            'job_contract_id' => $staff->job_contract_id,
+            'job_position_id' => $staff->agreement?->job_position_id,
+            'agreement_id' => $staff->job_contract_id,
 
             'manager_staff_id' => data_get(
                 $staff->attributes,
