@@ -365,10 +365,58 @@ return new class extends Migration
             $table->json('attributes')->nullable();
             $table->timestamps();
         });
+        Schema::create('wfm_workforce_assignments', function (Blueprint $table): void {
+            $table->id();
+            $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('staff_id')->index();
+            $table->unsignedBigInteger('org_corp_id')->nullable()->index();
+            $table->unsignedBigInteger('org_unit_id')->nullable()->index();
+            $table->unsignedBigInteger('org_team_id')->nullable()->index();
+            $table->unsignedBigInteger('job_position_id')->nullable()->index();
+            $table->unsignedBigInteger('manager_staff_id')->nullable()->index();
+            $table->unsignedBigInteger('agreement_id')->nullable()->index();
+            $table->unsignedBigInteger('shift_id')->nullable()->index();
+            $table->string('assignment_type', 50)->default('primary')->index();
+            $table->string('status', 40)->default('active')->index();
+            $table->date('effective_from')->nullable()->index();
+            $table->date('effective_to')->nullable()->index();
+            $table->boolean('is_primary')->default(true)->index();
+            $table->string('source', 80)->nullable()->index();
+            $table->string('source_reference', 191)->nullable()->index();
+            $table->json('attributes')->nullable();
+            $table->timestamps();
+
+            $table->index(['staff_id', 'status', 'is_primary'], 'wfm_assignment_staff_current_idx');
+            $table->index(['org_unit_id', 'job_position_id', 'status'], 'wfm_assignment_org_position_idx');
+            $table->unique(['source', 'source_reference'], 'wfm_assignment_source_unique');
+        });
+
+        Schema::create('wfm_workforce_events', function (Blueprint $table): void {
+            $table->id();
+            $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('staff_id')->index();
+            $table->unsignedBigInteger('workforce_assignment_id')->nullable()->index();
+            $table->string('event_type', 80)->index();
+            $table->dateTime('effective_at')->index();
+            $table->string('source', 80)->default('wfm')->index();
+            $table->string('source_reference', 191)->nullable()->index();
+            $table->nullableMorphs('triggerable', 'wfm_event_triggerable_idx');
+            $table->json('before_state')->nullable();
+            $table->json('after_state')->nullable();
+            $table->text('remarks')->nullable();
+            $table->unsignedBigInteger('recorded_by_id')->nullable()->index();
+            $table->json('attributes')->nullable();
+            $table->timestamps();
+
+            $table->index(['staff_id', 'effective_at'], 'wfm_event_staff_effective_idx');
+            $table->unique(['source', 'source_reference', 'event_type'], 'wfm_event_source_unique');
+        });
     }
 
     public function down(): void
     {
+        Schema::dropIfExists('wfm_workforce_events');
+        Schema::dropIfExists('wfm_workforce_assignments');
         Schema::dropIfExists('wfm_employment_archives');
         Schema::dropIfExists('wfm_exit_clearance_items');
         Schema::dropIfExists('wfm_exit_clearances');
