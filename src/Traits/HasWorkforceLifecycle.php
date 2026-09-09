@@ -17,9 +17,22 @@ trait HasWorkforceLifecycle
         return $this->hasMany(WorkforceAssignment::class, 'staff_id');
     }
 
+    // public function currentWorkforceAssignment(): HasOne
+    // {
+    //     return $this->hasOne(WorkforceAssignment::class, 'staff_id')->ofMany('id', 'max', fn ($q) => $q->where('status', WorkforceAssignmentStatus::Active->value)->where('is_primary', true));
+    // }
     public function currentWorkforceAssignment(): HasOne
     {
-        return $this->hasOne(WorkforceAssignment::class, 'staff_id')->ofMany('id', 'max', fn ($q) => $q->where('status', WorkforceAssignmentStatus::Active->value)->where('is_primary', true));
+        return $this->hasOne(
+            WorkforceAssignment::class,
+            'staff_id'
+        )
+            ->where(
+                'status',
+                WorkforceAssignmentStatus::Active->value
+            )
+            ->where('is_primary', true)
+            ->latestOfMany();
     }
 
     public function workforceEvents(): HasMany

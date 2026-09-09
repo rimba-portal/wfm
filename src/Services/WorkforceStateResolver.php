@@ -17,10 +17,11 @@ final class WorkforceStateResolver
             'job_position_id' => $staff->agreement?->job_position_id,
             'agreement_id' => $staff->job_contract_id,
 
-            'manager_staff_id' => data_get(
-                $staff->attributes,
-                'reports_to_staff_id'
-            ),
+            // 'manager_staff_id' => data_get(
+            //     $staff->attributes,
+            //     'reports_to_staff_id'
+            // ),
+            'manager_staff_id' => null,
 
             'shift_id' => data_get(
                 $staff->attributes,
