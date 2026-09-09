@@ -1,78 +1,77 @@
 {
-  "roles": [
+  "wfm_employment_archives": [
     {
-      "code": "WP10_OWNER",
-      "name": "WP10 Owner"
-    }
-  ],
-  "workflow_blueprints": [
-    {
-      "code": "WP10-WF",
-      "name": "WP10 Workflow"
-    }
-  ],
-  "workflow_nodes": [
-    {
-      "code": "DRAFT"
-    },
-    {
-      "code": "REVIEW"
-    },
-    {
-      "code": "APPROVE"
-    },
-    {
-      "code": "COMPLETE"
-    }
-  ],
-  "workflow_transitions": [
-    {
-      "code": "SUBMIT"
-    },
-    {
-      "code": "APPROVE"
-    },
-    {
-      "code": "REJECT"
-    }
-  ],
-  "work_packages": [
-    {
-      "code": "WP10",
-      "name": "WP10"
-    }
-  ],
-  "task_lists": [
-    {
-      "code": "WP10-TL01",
-      "name": "Primary Process"
-    }
-  ],
-  "tasks": [
-    {
-      "code": "WP10-T01",
-      "name": "Initiate"
-    },
-    {
-      "code": "WP10-T02",
-      "name": "Review"
-    },
-    {
-      "code": "WP10-T03",
-      "name": "Approve"
-    }
-  ],
-  "work_instructions": [
-    {
-      "code": "WP10-WI01",
-      "name": "Standard Procedure"
-    }
-  ],
-  "wp_employment_archives": [
-    {
-      "staff_snapshot": {
-        "staff_no": "S10001"
-      }
+      "code": "ARCH-0001",
+
+      "staffSnapshot": {
+        "staff_no": "S10001",
+        "name": "Archived Employee"
+      },
+
+      "workflowBlueprint": {
+        "code": "WP10-WF",
+        "name": "WP10 Employment Archive Workflow",
+
+        "requesterRoles": [
+          {
+            "code": "WP10_OWNER",
+            "name": "WP10 Owner",
+            "guard_name": "web"
+          }
+        ],
+
+        "workflowNodes": [
+          {
+            "code": "DRAFT",
+            "name": "Prepare Archive",
+            "type": "start"
+          },
+          {
+            "code": "REVIEW",
+            "name": "Review Employment Records",
+            "type": "workpackage"
+          },
+          {
+            "code": "APPROVE",
+            "name": "Approve Archive",
+            "type": "decision"
+          },
+          {
+            "code": "COMPLETE",
+            "name": "Archive Complete",
+            "type": "end"
+          }
+        ]
+      },
+
+      "taskLists": [
+        {
+          "code": "WP10-TL01",
+          "name": "Employment Archive Checklist",
+
+          "tasks": [
+            {
+              "code": "WP10-T01",
+              "name": "Collect Employment Records"
+            },
+            {
+              "code": "WP10-T02",
+              "name": "Validate Archive Contents"
+            },
+            {
+              "code": "WP10-T03",
+              "name": "Finalize Archive",
+
+              "workInstructions": [
+                {
+                  "code": "WP10-WI01",
+                  "name": "Employment Archive Procedure"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

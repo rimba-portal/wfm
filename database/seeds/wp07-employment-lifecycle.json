@@ -1,87 +1,58 @@
 {
-  "roles": [
+  "wfm_development_plans": [
     {
-      "code": "WP07_OWNER",
-      "name": "WP07 Owner"
-    }
-  ],
-  "workflow_blueprints": [
-    {
-      "code": "WP07-WF",
-      "name": "WP07 Workflow"
-    }
-  ],
-  "workflow_nodes": [
-    {
-      "code": "DRAFT"
-    },
-    {
-      "code": "REVIEW"
-    },
-    {
-      "code": "APPROVE"
-    },
-    {
-      "code": "COMPLETE"
-    }
-  ],
-  "workflow_transitions": [
-    {
-      "code": "SUBMIT"
-    },
-    {
-      "code": "APPROVE"
-    },
-    {
-      "code": "REJECT"
-    }
-  ],
-  "work_packages": [
-    {
-      "code": "WP07",
-      "name": "WP07"
-    }
-  ],
-  "task_lists": [
-    {
-      "code": "WP07-TL01",
-      "name": "Primary Process"
-    }
-  ],
-  "tasks": [
-    {
-      "code": "WP07-T01",
-      "name": "Initiate"
-    },
-    {
-      "code": "WP07-T02",
-      "name": "Review"
-    },
-    {
-      "code": "WP07-T03",
-      "name": "Approve"
-    }
-  ],
-  "work_instructions": [
-    {
-      "code": "WP07-WI01",
-      "name": "Standard Procedure"
-    }
-  ],
-  "wp_development_plans": [
-    {
-      "code": "DP-001"
-    }
-  ],
-  "wp_performance_reviews": [
-    {
-      "code": "PR-001",
-      "rating": 4.5
-    }
-  ],
-  "wp_succession_plans": [
-    {
-      "code": "SP-CIO"
+      "code": "DP-001",
+      "name": "Leadership Development Plan",
+
+      "workflowBlueprint": {
+        "code": "WP07-WF",
+        "name": "WP07 Employment Lifecycle Workflow",
+
+        "requesterRoles": [
+          {
+            "code": "WP07_OWNER",
+            "name": "WP07 Owner",
+            "guard_name": "web"
+          }
+        ],
+
+        "workflowNodes": [
+          {
+            "code": "DRAFT",
+            "name": "Draft Plan",
+            "type": "start"
+          },
+          {
+            "code": "REVIEW",
+            "name": "Review Development Plan",
+            "type": "workpackage"
+          },
+          {
+            "code": "APPROVE",
+            "name": "Approve Development Plan",
+            "type": "decision"
+          },
+          {
+            "code": "COMPLETE",
+            "name": "Development Plan Complete",
+            "type": "end"
+          }
+        ]
+      },
+
+      "performanceReviews": [
+        {
+          "code": "PR-001",
+          "rating": 4.5
+        }
+      ],
+
+      "successionPlans": [
+        {
+          "code": "SP-CIO",
+          "name": "Chief Information Officer Successor"
+        }
+      ]
     }
   ]
 }

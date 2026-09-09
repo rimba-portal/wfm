@@ -1,74 +1,35 @@
 {
-  "roles": [
-    {
-      "code": "WP03_OWNER",
-      "name": "WP03 Owner"
-    }
-  ],
   "workflow_blueprints": [
     {
       "code": "WP03-WF",
-      "name": "WP03 Workflow"
+      "name": "WP03 Workflow",
+
+      "requesterRoles": [
+        {
+          "code": "WP03_OWNER",
+          "name": "WP03 Owner",
+          "guard_name": "web"
+        }
+      ],
+
+      "workflowNodes": [
+        {
+          "code": "DRAFT",
+          "type": "start"
+        },
+        {
+          "code": "REVIEW",
+          "type": "workpackage"
+        },
+        {
+          "code": "COMPLETE",
+          "type": "end"
+        }
+      ]
     }
   ],
-  "workflow_nodes": [
-    {
-      "code": "DRAFT"
-    },
-    {
-      "code": "REVIEW"
-    },
-    {
-      "code": "APPROVE"
-    },
-    {
-      "code": "COMPLETE"
-    }
-  ],
-  "workflow_transitions": [
-    {
-      "code": "SUBMIT"
-    },
-    {
-      "code": "APPROVE"
-    },
-    {
-      "code": "REJECT"
-    }
-  ],
-  "work_packages": [
-    {
-      "code": "WP03",
-      "name": "WP03"
-    }
-  ],
-  "task_lists": [
-    {
-      "code": "WP03-TL01",
-      "name": "Primary Process"
-    }
-  ],
-  "tasks": [
-    {
-      "code": "WP03-T01",
-      "name": "Initiate"
-    },
-    {
-      "code": "WP03-T02",
-      "name": "Review"
-    },
-    {
-      "code": "WP03-T03",
-      "name": "Approve"
-    }
-  ],
-  "work_instructions": [
-    {
-      "code": "WP03-WI01",
-      "name": "Standard Procedure"
-    }
-  ],
-  "wp_manpower_requests": [
+
+  "wfm_manpower_requests": [
     {
       "request_no": "MR-2027-001",
       "reason": "Digital Banking Expansion",

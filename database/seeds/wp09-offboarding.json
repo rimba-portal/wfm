@@ -1,77 +1,73 @@
 {
-  "roles": [
-    {
-      "code": "WP09_OWNER",
-      "name": "WP09 Owner"
-    }
-  ],
-  "workflow_blueprints": [
-    {
-      "code": "WP09-WF",
-      "name": "WP09 Workflow"
-    }
-  ],
-  "workflow_nodes": [
-    {
-      "code": "DRAFT"
-    },
-    {
-      "code": "REVIEW"
-    },
-    {
-      "code": "APPROVE"
-    },
-    {
-      "code": "COMPLETE"
-    }
-  ],
-  "workflow_transitions": [
-    {
-      "code": "SUBMIT"
-    },
-    {
-      "code": "APPROVE"
-    },
-    {
-      "code": "REJECT"
-    }
-  ],
-  "work_packages": [
-    {
-      "code": "WP09",
-      "name": "WP09"
-    }
-  ],
-  "task_lists": [
-    {
-      "code": "WP09-TL01",
-      "name": "Primary Process"
-    }
-  ],
-  "tasks": [
-    {
-      "code": "WP09-T01",
-      "name": "Initiate"
-    },
-    {
-      "code": "WP09-T02",
-      "name": "Review"
-    },
-    {
-      "code": "WP09-T03",
-      "name": "Approve"
-    }
-  ],
-  "work_instructions": [
-    {
-      "code": "WP09-WI01",
-      "name": "Standard Procedure"
-    }
-  ],
-  "wp_exit_clearances": [
+  "wfm_exit_clearances": [
     {
       "code": "EC-001",
-      "status": "pending"
+      "status": "pending",
+
+      "workflowBlueprint": {
+        "code": "WP09-WF",
+        "name": "WP09 Exit Clearance Workflow",
+
+        "requesterRoles": [
+          {
+            "code": "WP09_OWNER",
+            "name": "WP09 Owner",
+            "guard_name": "web"
+          }
+        ],
+
+        "workflowNodes": [
+          {
+            "code": "DRAFT",
+            "name": "Initiate Exit Clearance",
+            "type": "start"
+          },
+          {
+            "code": "REVIEW",
+            "name": "Department Clearance Review",
+            "type": "workpackage"
+          },
+          {
+            "code": "APPROVE",
+            "name": "Finalize Clearance",
+            "type": "decision"
+          },
+          {
+            "code": "COMPLETE",
+            "name": "Exit Clearance Complete",
+            "type": "end"
+          }
+        ]
+      },
+
+      "taskLists": [
+        {
+          "code": "WP09-TL01",
+          "name": "Exit Clearance Checklist",
+
+          "tasks": [
+            {
+              "code": "WP09-T01",
+              "name": "Return Company Assets"
+            },
+            {
+              "code": "WP09-T02",
+              "name": "Disable System Access"
+            },
+            {
+              "code": "WP09-T03",
+              "name": "Confirm Department Clearance",
+
+              "workInstructions": [
+                {
+                  "code": "WP09-WI01",
+                  "name": "Exit Clearance Procedure"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,77 +1,73 @@
 {
-  "roles": [
-    {
-      "code": "WP08_OWNER",
-      "name": "WP08 Owner"
-    }
-  ],
-  "workflow_blueprints": [
-    {
-      "code": "WP08-WF",
-      "name": "WP08 Workflow"
-    }
-  ],
-  "workflow_nodes": [
-    {
-      "code": "DRAFT"
-    },
-    {
-      "code": "REVIEW"
-    },
-    {
-      "code": "APPROVE"
-    },
-    {
-      "code": "COMPLETE"
-    }
-  ],
-  "workflow_transitions": [
-    {
-      "code": "SUBMIT"
-    },
-    {
-      "code": "APPROVE"
-    },
-    {
-      "code": "REJECT"
-    }
-  ],
-  "work_packages": [
-    {
-      "code": "WP08",
-      "name": "WP08"
-    }
-  ],
-  "task_lists": [
-    {
-      "code": "WP08-TL01",
-      "name": "Primary Process"
-    }
-  ],
-  "tasks": [
-    {
-      "code": "WP08-T01",
-      "name": "Initiate"
-    },
-    {
-      "code": "WP08-T02",
-      "name": "Review"
-    },
-    {
-      "code": "WP08-T03",
-      "name": "Approve"
-    }
-  ],
-  "work_instructions": [
-    {
-      "code": "WP08-WI01",
-      "name": "Standard Procedure"
-    }
-  ],
-  "wp_separation_requests": [
+  "wfm_separation_requests": [
     {
       "code": "SEP-001",
-      "reason": "Retirement"
+      "reason": "Retirement",
+
+      "workflowBlueprint": {
+        "code": "WP08-WF",
+        "name": "WP08 Separation Workflow",
+
+        "requesterRoles": [
+          {
+            "code": "WP08_OWNER",
+            "name": "WP08 Owner",
+            "guard_name": "web"
+          }
+        ],
+
+        "workflowNodes": [
+          {
+            "code": "DRAFT",
+            "name": "Submit Separation Request",
+            "type": "start"
+          },
+          {
+            "code": "REVIEW",
+            "name": "Review Separation Request",
+            "type": "workpackage"
+          },
+          {
+            "code": "APPROVE",
+            "name": "Approve Separation",
+            "type": "decision"
+          },
+          {
+            "code": "COMPLETE",
+            "name": "Separation Complete",
+            "type": "end"
+          }
+        ]
+      },
+
+      "taskLists": [
+        {
+          "code": "WP08-TL01",
+          "name": "Separation Processing",
+
+          "tasks": [
+            {
+              "code": "WP08-T01",
+              "name": "Receive Resignation Notice"
+            },
+            {
+              "code": "WP08-T02",
+              "name": "Manager Review"
+            },
+            {
+              "code": "WP08-T03",
+              "name": "Approve Separation",
+
+              "workInstructions": [
+                {
+                  "code": "WP08-WI01",
+                  "name": "Separation Procedure"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
