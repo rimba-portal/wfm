@@ -20,6 +20,7 @@ class WfmServiceProvider extends BitesServiceProvider
         if ($this->app->runningInConsole()) {
             $this->registerCommandsFromDirectory();
         }
+
         Event::listen(WorkforceAssignmentChanged::class, RecordAssignmentEvent::class);
 
     }
@@ -39,6 +40,7 @@ class WfmServiceProvider extends BitesServiceProvider
         if (! is_dir($commandDir)) {
             return;
         }
+
         $commands = [];
         foreach (glob($commandDir.'/*.php') as $file) {
             $className = basename($file, '.php');
@@ -50,6 +52,7 @@ class WfmServiceProvider extends BitesServiceProvider
                 }
             }
         }
+
         if ($commands !== []) {
             $this->commands($commands);
         }
