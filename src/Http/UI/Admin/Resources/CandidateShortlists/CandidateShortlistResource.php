@@ -1,17 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rimba\Wfm\Http\UI\Admin\Resources\CandidateShortlists;
 
 use BackedEnum;
-use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Rimba\Wfm\Http\UI\Admin\Resources\CandidateShortlists\Pages\ListCandidateShortlists;
+use Rimba\Wfm\Models\CandidateShortlist;
+use UnitEnum;
 
 class CandidateShortlistResource extends Resource
 {
-    protected static ?string $model = \Rimba\Wfm\Models\CandidateShortlist::class;
+    protected static ?string $model = CandidateShortlist::class;
 
     protected static string|UnitEnum|null $navigationGroup = 'Wfm';
 
@@ -21,23 +24,32 @@ class CandidateShortlistResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'code';
 
-    public static function form(Schema $schema): Schema { return $schema->components([]); }
+    public static function form(Schema $schema): Schema
+    {
+        return $schema->components([]);
+    }
 
-    public static function infolist(Schema $schema): Schema { return $schema->components([]); }
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema->components([]);
+    }
 
-    public static function table(Table $table): Table { return $table->columns([]); }
+    public static function table(Table $table): Table
+    {
+        return $table->columns([]);
+    }
 
-    public static function getRelations(): array 
-    { 
-        return [ 
-            // 
+    public static function getRelations(): array
+    {
+        return [
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => \Rimba\Wfm\Http\UI\Admin\Resources\CandidateShortlists\Pages\ListCandidateShortlists::route('/'),
+            'index' => ListCandidateShortlists::route('/'),
             // 'create' => \Rimba\Wfm\Http\UI\Admin\Resources\CandidateShortlists\Pages\CreateCandidateShortlist::route('/create'),
             // 'view' => \Rimba\Wfm\Http\UI\Admin\Resources\CandidateShortlists\Pages\ViewCandidateShortlist::route('/{record}'),
             // 'edit' => \Rimba\Wfm\Http\UI\Admin\Resources\CandidateShortlists\Pages\EditCandidateShortlist::route('/{record}/edit'),

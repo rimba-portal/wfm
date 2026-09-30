@@ -1,17 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rimba\Wfm\Http\UI\Admin\Resources\PromotionRequests;
 
 use BackedEnum;
-use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Rimba\Wfm\Http\UI\Admin\Resources\PromotionRequests\Pages\ListPromotionRequests;
+use Rimba\Wfm\Models\PromotionRequest;
+use UnitEnum;
 
 class PromotionRequestResource extends Resource
 {
-    protected static ?string $model = \Rimba\Wfm\Models\PromotionRequest::class;
+    protected static ?string $model = PromotionRequest::class;
 
     protected static string|UnitEnum|null $navigationGroup = 'Wfm';
 
@@ -21,23 +24,32 @@ class PromotionRequestResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'x';
 
-    public static function form(Schema $schema): Schema { return $schema->components([]); }
+    public static function form(Schema $schema): Schema
+    {
+        return $schema->components([]);
+    }
 
-    public static function infolist(Schema $schema): Schema { return $schema->components([]); }
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema->components([]);
+    }
 
-    public static function table(Table $table): Table { return $table->columns([]); }
+    public static function table(Table $table): Table
+    {
+        return $table->columns([]);
+    }
 
-    public static function getRelations(): array 
-    { 
-        return [ 
-            // 
+    public static function getRelations(): array
+    {
+        return [
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => \Rimba\Wfm\Http\UI\Admin\Resources\PromotionRequests\Pages\ListPromotionRequests::route('/'),
+            'index' => ListPromotionRequests::route('/'),
             // 'create' => \Rimba\Wfm\Http\UI\Admin\Resources\PromotionRequests\Pages\CreatePromotionRequest::route('/create'),
             // 'view' => \Rimba\Wfm\Http\UI\Admin\Resources\PromotionRequests\Pages\ViewPromotionRequest::route('/{record}'),
             // 'edit' => \Rimba\Wfm\Http\UI\Admin\Resources\PromotionRequests\Pages\EditPromotionRequest::route('/{record}/edit'),
